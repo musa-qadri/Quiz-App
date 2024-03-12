@@ -1,0 +1,72 @@
+.navbar{
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 15px 25px, rgba(0, 0, 0, 0.05) 0px 5px 10px;
+    /* position: fixed;
+    z-index: 1; */
+}
+.img img{
+    width: 70px;
+    height: 60px;
+    border-radius: 40px;
+}
+.img{
+    display: flex;
+    align-items: center;
+    gap: 11px;
+}
+.main{
+    width: 80%;
+    margin: 0px auto;
+    margin-top: 50px;
+}
+span{
+    color: rgb(87, 87, 224);
+}
+.row1{
+    margin-bottom: 10px;
+    padding: 10px;
+   
+}
+.cart h1{
+    font-size: 60px !important;
+}
+.cart{
+    text-align: center;
+}
+
+.btn{
+    padding: 5px 40%;
+}
+.size{
+    font-size: 25px;
+   
+}
+.mainSec{
+    margin-top: 90px !important;
+    margin: 0px auto;
+    width: 80%;
+}
+.mainSec h1{
+    color: rgb(87, 87, 224);
+}
+.btnSize{
+    width: 100%;
+    padding: 25px 40px;
+    background-color: rgb(240, 238, 238);
+    text-align: left;
+    color: black;
+    font-size: 20px;
+    border: 0.5px solid rgb(197, 194, 194) ;
+    
+    
+}
+.btnSize:hover{
+    background-color: rgb(228, 224, 224);
+    color: black;
+}
+.haeding{
+    width: 80%;
+    margin: 0px auto;
+    margin-top: 50px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+    padding: 10px;
+}
