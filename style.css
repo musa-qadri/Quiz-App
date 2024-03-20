@@ -4,9 +4,10 @@
     z-index: 1; */
 }
 .img img{
-    width: 70px;
+    width: 60px;
     height: 60px;
-    border-radius: 40px;
+    border-radius: 30px;
+    object-fit: cover;
 }
 .img{
     display: flex;
@@ -69,4 +70,15 @@ span{
     margin-top: 50px;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
     padding: 10px;
+}
+.dropdown-item{
+    font-size: 25px;
+    padding: 7px 100px 13px 20px;
+    margin: 2px;
+}
+
+.dropdown-item:hover{
+    background-color: rgb(50, 50, 243);
+    color: white;
+    
 }
