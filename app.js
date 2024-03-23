@@ -149,6 +149,7 @@ function select() {
 function start() {
     main.style.display = 'none'
     main1.style.display = 'none'
+    main2.style.display = 'block'
 }
 
 var drop = document.getElementById('drop')
@@ -170,3 +171,96 @@ function dropdown() {
 }
 dropdown()
 
+const timerUp = document.getElementById('timer');
+const questionElenment = document.getElementById('questio');
+const choice = document.getElementById('choice');
+const btnnext = document.getElementById('btn-next');
+const scoreElenment = document.getElementById('score');
+const restart = document.getElementById('btn-restart');
+
+var currentQuestion = 0;
+var score = 0
+var timer = 180;
+
+function loadQuestion() {
+    const question = questions[currentQuestion];
+    questionElenment.textContent = question.question;
+
+    choice.innerHTML = '';
+    for (i = 0; i < question.choices.length; i++) {
+        const li = document.getElementById('li');
+        const radio = document.getElementById('input');
+        radio.type = 'radio';
+        radio.name = 'choice';
+        radio.value = 'i';
+        li.appendChild(radio);
+        li.appendChild(document.createTextNode(question.choices[i]));
+        choice.appendChild(li)
+
+    }
+}
+loadQuestion();
+
+function checkAnswer() {
+    const selectOption = document.querySelector("input:checked")
+    if (selectOption) {
+        const selectAnswer = parseInt(selectOption.value)
+        if (selectAnswer === questions[currentQuestion].correctAnswer) {
+            score++;
+        }
+        if (currentQuestion < questions.length) {
+            loadQuestion()
+        }
+        else {
+            showCase()
+        }
+    }
+}
+checkAnswer();
+
+function showCase() {
+    clearInterval(timeIntervel);
+    timer.style.display = 'none'
+    questionElenment.style.display = 'none'
+    choice.style.display = 'none'
+    btnnext.style.display = 'none'
+    scoreElenment.textContent = `your Scour: ${score} out of ${questions.length}`
+    restart.style.display = 'block'
+}
+
+function restartQuize() {
+    currentQuestion = 0;
+    score = 0;
+    timer = 180;
+    loadQuestion();
+    restart.style.display = 'none'
+    timer.style.display = 'block'
+    questionElenment.style.display = 'block'
+    choice.style.display = 'block'
+    btnnext.style.display = 'block'
+    timeIntervel = setInterval(updateTimer, 1000);
+}
+restartQuize();
+
+function updateTimer() {
+    const minutes = Math.floor(timeLeft / 60);
+    var seconds = timeLeft % 60;
+    seconds = seconds < 10 ? "0" + seconds : seconds;
+    timerElement.textContent = `${minutes} : ${seconds}`;
+
+    if (timeLeft === 0) {
+        showScore();
+    } else {
+        timeLeft--;
+    }
+}
+
+updateTimer()
+
+
+var timeIntervel = setInterval(updateTimer,1000)
+
+btnnext.addEventListener("click",checkAnswer);
+restart.addEventListener("click",restartQuize);
+loadQuestion();
+restart.style.display="none";

@@ -82,3 +82,23 @@ span{
     color: white;
     
 }
+.containes{
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    margin-top: 20px !important;
+    padding: 30px;
+    width: 90%;
+    margin: 0px auto;
+}
+
+
+
+.end{
+    width: 10%;
+    margin: 0px auto;
+    
+}
+
+.credits{
+    text-align: center;
+    align-items: center;
+}
