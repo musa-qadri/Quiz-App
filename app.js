@@ -150,6 +150,7 @@ function start() {
     main.style.display = 'none'
     main1.style.display = 'none'
     main2.style.display = 'block'
+    
 }
 
 var drop = document.getElementById('drop')
@@ -162,7 +163,7 @@ function dropdown() {
     </a>
     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
       <li><a class="dropdown-item" href="#"><i class="fa-solid fa-square-poll-vertical"></i> Result</a></li>
-      <li><a class="dropdown-item" href="#"> <i class="fa-solid fa-arrow-right-from-bracket"></i> LogOut</a></li>
+      <li><a class="dropdown-item" href="#" onclick="logout()"> <i class="fa-solid fa-arrow-right-from-bracket"></i> LogOut</a></li>
    
     </ul>
   </div>`
@@ -171,28 +172,29 @@ function dropdown() {
 }
 dropdown()
 
-const timerUp = document.getElementById('timer');
+
 const questionElenment = document.getElementById('questio');
 const choice = document.getElementById('choice');
-const btnnext = document.getElementById('btn-next');
+const btnnext = document.getElementById('btn-next');    
 const scoreElenment = document.getElementById('score');
 const restart = document.getElementById('btn-restart');
+const timerUp = document.getElementById('timer');
 
 var currentQuestion = 0;
 var score = 0
-var timer = 180;
+var timelefts = 180;
 
 function loadQuestion() {
     const question = questions[currentQuestion];
     questionElenment.textContent = question.question;
 
     choice.innerHTML = '';
-    for (i = 0; i < question.choices.length; i++) {
-        const li = document.getElementById('li');
-        const radio = document.getElementById('input');
+    for (var i = 0; i < question.choices.length; i++) {
+        const li = document.createElement('li');
+        const radio = document.createElement('input');
         radio.type = 'radio';
         radio.name = 'choice';
-        radio.value = 'i';
+        radio.value = i;
         li.appendChild(radio);
         li.appendChild(document.createTextNode(question.choices[i]));
         choice.appendChild(li)
@@ -201,13 +203,22 @@ function loadQuestion() {
 }
 loadQuestion();
 
+
 function checkAnswer() {
-    const selectOption = document.querySelector("input:checked")
+    var colore = document.querySelector('.backcolor')
+    
+    const selectOption = document.querySelector("input[name = 'choice']:checked")
+    
     if (selectOption) {
         const selectAnswer = parseInt(selectOption.value)
         if (selectAnswer === questions[currentQuestion].correctAnswer) {
             score++;
         }
+        if(selectOption.value===1){
+            btnnext.style.display=colore
+        }
+        console.log(selectOption.value)
+        currentQuestion++;
         if (currentQuestion < questions.length) {
             loadQuestion()
         }
@@ -220,38 +231,41 @@ checkAnswer();
 
 function showCase() {
     clearInterval(timeIntervel);
-    timer.style.display = 'none'
+    timerUp.style.display = 'none'
     questionElenment.style.display = 'none'
     choice.style.display = 'none'
     btnnext.style.display = 'none'
+    scoreElenment.style.display='block'
     scoreElenment.textContent = `your Scour: ${score} out of ${questions.length}`
     restart.style.display = 'block'
 }
+showCase()
 
 function restartQuize() {
     currentQuestion = 0;
     score = 0;
-    timer = 180;
+    timelefts = 180;
     loadQuestion();
     restart.style.display = 'none'
-    timer.style.display = 'block'
+    timerUp.style.display = 'block'
     questionElenment.style.display = 'block'
     choice.style.display = 'block'
     btnnext.style.display = 'block'
+    scoreElenment.style.display='none'
     timeIntervel = setInterval(updateTimer, 1000);
 }
 restartQuize();
 
 function updateTimer() {
-    const minutes = Math.floor(timeLeft / 60);
-    var seconds = timeLeft % 60;
-    seconds = seconds < 10 ? "0" + seconds : seconds;
-    timerElement.textContent = `${minutes} : ${seconds}`;
+    const minutes = Math.floor(timelefts / 60);
+    var seconds = timelefts % 60;
+    seconds = seconds<10?"0"+ seconds:seconds;
+    timerUp.textContent = `${minutes} : ${seconds}`;
 
-    if (timeLeft === 0) {
-        showScore();
+    if (timelefts === 0) {
+        showCase();
     } else {
-        timeLeft--;
+        timelefts--;
     }
 }
 
@@ -260,7 +274,66 @@ updateTimer()
 
 var timeIntervel = setInterval(updateTimer,1000)
 
-btnnext.addEventListener("click",checkAnswer);
-restart.addEventListener("click",restartQuize);
+btnnext.addEventListener("click" , checkAnswer);
+restart.addEventListener("click", restartQuize);
 loadQuestion();
 restart.style.display="none";
+
+function logout(){
+    timerUp.style.display = 'none'
+    questionElenment.style.display = 'none'
+    choice.style.display = 'none'
+    btnnext.style.display = 'none'
+    scoreElenment.style.display='none'
+    scoreElenment.textContent = 'none'
+    restart.style.display = 'none'
+    main2.style.display = 'none'
+    main1.style.display ='none'
+    main.style.display ='block'
+}
+
+
+var loginPage=document.querySelector('#loginPage');
+var signupPage=document.querySelector('#signupPage');
+var inputEmailLogin=document.getElementById('inputEmailLogin');
+var inputPasswordLogin=document.getElementById('inputPasswordLogin');
+var inputEmailSignup=document.getElementById('inputEmailSignup');
+var inputpasswordSignup=document.getElementById('inputpasswordSignup')
+
+function loginchange(){
+  loginPage.style.display='block';
+  signupPage.style.display='none';
+
+}
+
+function signupchange(){
+    loginPage.style.display='none';
+    signupPage.style.display='block';
+}
+
+function loginBtn(){
+    localStorage.setItem('email', inputEmailLogin.value)
+    localStorage.setItem('password' , inputPasswordLogin.value)
+    if(!inputEmailLogin.value && !inputPasswordLogin){
+        alert('please fillout')
+    }
+    else{
+        loginPage.style.display='none';
+        signupPage.style.display='none';
+    }
+}
+// loginBtn()
+// localStorage.setItem("email" , inputEmailLogin.value)
+
+function signupbtn(){
+    // console.log( localStorage.getItem('email'))
+    if(localStorage.getItem('email')== inputEmailSignup.value && localStorage.getItem('password')== inputpasswordSignup.value){
+        alert('signup sussess')
+    }
+    else{
+        alert('email or password not exist')
+        inputEmailSignup.value='';
+        inputpasswordSignup.value='';
+    }
+
+}

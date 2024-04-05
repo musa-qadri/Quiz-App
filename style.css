@@ -90,8 +90,6 @@ span{
     margin: 0px auto;
 }
 
-
-
 .end{
     width: 10%;
     margin: 0px auto;
@@ -101,4 +99,55 @@ span{
 .credits{
     text-align: center;
     align-items: center;
+}
+
+#choice li{
+   
+    font-size: 1.4rem;
+    margin-left: 10px;
+}
+#score{
+    font-weight: 700;
+}
+.backcolor{
+    background-color: rgb(12, 12, 17) !important;
+}
+
+.login{
+    width: 400px;
+    /* height: 400px; */
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+    border-radius: 15px;
+    margin-top: 200px !important;
+    margin: 0px auto;
+    border: 1px solid black;
+    padding: 20px;
+    text-align: center;
+    background-color: rgb(227, 227, 230);
+}
+ 
+@media screen and (max-width: 580px) {
+    .login{
+        width: 90%;
+        padding: 5px;
+    }
+    .senter{
+        text-align: center;
+    }
+    .loginUser{
+        margin: 0px auto;
+    }
+}
+
+.loginUser{
+    width: 90%;
+    text-align:left ;
+}
+.inputSec{
+    width: 100%;
+    border-radius: 4px;
+    padding: 8px;
+}
+.alin{
+    width: 100%;
 }

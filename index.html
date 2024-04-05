@@ -15,7 +15,53 @@
 </head>
 
 <body>
-  <nav class="navbar navbar-light bg-light">
+ <!-- login div -->
+  <div class="login" id="loginPage" >
+    <h1> <b>Login</b> </h1>
+    <div class="loginUser">
+      <h5>Email</h5>
+      <input type="text" class="inputSec" placeholder="Email" id="inputEmailLogin">
+      <br>
+      <br>
+      <h5>Password</h5>
+      <input type="password" class="inputSec" placeholder="Password" id="inputPasswordLogin">
+      <br>
+      <br>
+      <button type="button" class="btn btn-primary alin" onclick="loginBtn()">Login</button>
+      <br>
+      <br>      
+      <h5 class="senter">Didn't have an account? <span onclick="signupchange()">signup</span></h5>
+    </div>
+
+  </div>
+
+<!-- signup div -->
+
+  <div class="login" id="signupPage" style="display: none;">
+    <h1> <b>Signup</b> </h1>
+    <div class="loginUser">
+      <h5>Email</h5>
+      <input type="text" class="inputSec" placeholder="Your Email" id="inputEmailSignup">
+      <br>
+      <br>
+      <h5>Password</h5>
+      <input type="password" class="inputSec" placeholder="create Password" id="inputpasswordSignup">
+      <br>
+      <br>
+      <button type="button" class="btn btn-primary alin" onclick="signupbtn()">signup</button>
+      <br>
+      <br>      
+      <h5 class="senter" >Already have an account ? <span onclick="loginchange()">login</span></h5>
+    </div>
+
+  </div>
+
+
+
+
+
+
+  <nav class="navbar navbar-light bg-light" style="display: none;" >
     <div class="container">
       <a class="navbar-brand" href="#">
         <img src="https://quiz.saylaniwelfare.com/images/smit.png" alt="" width="100" height="64"
@@ -29,7 +75,7 @@
 
     </div>
   </nav>
-  <div class="main" id="main">
+  <div class="main" id="main" style="display: none;">
     <h1><span>Hi, Musa qazim 👋</span></h1>
     <h5>Welcome to the SMIT's quiz portal. Select your course below to take a quiz.</h5>
     <hr>
@@ -66,7 +112,7 @@
       </div>
       <div class="question-mcqs">
         <div>
-          <h5 id="questio"></h5>
+          <h4 id="questio"></h4>
           <ul id="choice" class="list-unstyled">
           </ul>
         </div>
@@ -74,7 +120,7 @@
           <button class="btn btn-primary btn-nex" id="btn-next" type="submit">Next</button>
           <br>
           <br>
-          <p id="score" class="text-center mt-4"></p>
+          <h3 id="score" class="text-center mt-4"></h3>
           <button class="btn btn-primary" id="btn-restart" style="display: none;" type="submit">Restart</button>
         </div>
       </div>
@@ -84,24 +130,6 @@
 
     <div class="credits"> ©️ 2024 <span>Musa</span>|All Right reserved|</div>
 
-
-    <!-- quiz -->
-    <!-- <div class="container">
-      <div class="quiz-container">
-        <h1 class="text-center">SMIT QUIZ</h1>
-        <div class="timer text-center">
-          <span id="time">0:00</span>
-        </div>
-        <div id="question-container" class="mb-4">
-          <p id="question"></p>
-          <ul id="choices" class="list-unstyled"></ul>
-        </div>
-        <button id="submit-btn" class="btn btn-primary btn-block">Submit</button>
-        <p id="score" class="text-center mt-4"></p>
-        <button id="restart-btn" class="btn btn-secondary btn-block">Restart</button>
-      </div>
-    </div> -->
-    <!-- quiz end -->
 
   </div>
 
