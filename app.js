@@ -298,7 +298,8 @@ var signupPage=document.querySelector('#signupPage');
 var inputEmailLogin=document.getElementById('inputEmailLogin');
 var inputPasswordLogin=document.getElementById('inputPasswordLogin');
 var inputEmailSignup=document.getElementById('inputEmailSignup');
-var inputpasswordSignup=document.getElementById('inputpasswordSignup')
+var inputpasswordSignup=document.getElementById('inputpasswordSignup');
+var nevbar=document.getElementById('nevbar')
 
 function loginchange(){
   loginPage.style.display='block';
@@ -314,12 +315,14 @@ function signupchange(){
 function loginBtn(){
     localStorage.setItem('email', inputEmailLogin.value)
     localStorage.setItem('password' , inputPasswordLogin.value)
-    if(!inputEmailLogin.value && !inputPasswordLogin){
+    if(inputEmailLogin.value=='' && !inputPasswordLogin==''){
         alert('please fillout')
     }
     else{
         loginPage.style.display='none';
         signupPage.style.display='none';
+        nevbar.style.display='block';
+        main.style.display='block';
     }
 }
 // loginBtn()
@@ -327,13 +330,20 @@ function loginBtn(){
 
 function signupbtn(){
     // console.log( localStorage.getItem('email'))
-    if(localStorage.getItem('email')== inputEmailSignup.value && localStorage.getItem('password')== inputpasswordSignup.value){
+if(inputEmailSignup.value=)
+
+    if(localStorage.getItem('email')== inputEmailSignup.value && localStorage.getItem('password')== inputpasswordSignup.value) {
         alert('signup sussess')
+        loginPage.style.display='none';
+        signupPage.style.display='none';
+        nevbar.style.display='block';
+        main.style.display='block';
     }
     else{
         alert('email or password not exist')
         inputEmailSignup.value='';
         inputpasswordSignup.value='';
     }
+
 
 }
