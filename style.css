@@ -1,3 +1,7 @@
+body{
+    
+}
+
 .navbar{
     box-shadow: rgba(0, 0, 0, 0.15) 0px 15px 25px, rgba(0, 0, 0, 0.05) 0px 5px 10px;
     /* position: fixed;
@@ -91,7 +95,7 @@ span{
 }
 
 .end{
-    width: 10%;
+    width: 50%;
     margin: 0px auto;
     
 }
@@ -150,4 +154,32 @@ span{
 }
 .alin{
     width: 100%;
+}
+
+#keyLock{
+    margin-top: 100px !important;
+    width: 90%;
+    /* height: 100px; */
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    padding: 20px 20px;
+    margin: 0px auto;
+}
+
+
+.keyBtn{
+    width: 150px !important;
+    /* height: 100px !important; */
+    margin: 0px auto !important;
+    background-color: rgb(77, 194, 112);
+    /* align-items: center; */
+    display: flex;
+    justify-content:center;
+    border-radius: 7px;
+    color: black;
+
+}
+.keyBtn:hover{
+    background-color:  rgb(52, 173, 91);
+    color: white;
+    border-color: white;
 }

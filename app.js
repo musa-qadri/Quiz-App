@@ -108,8 +108,8 @@ var main = document.getElementById('main')
 var main1 = document.getElementById('main1')
 var main2 = document.getElementById('main2')
 var cart = document.getElementById('cart')
-
-
+var keyLock = document.getElementById('keyLock')
+var keyInput =document.getElementById('keyInput');
 
 
 for (key in subject) {
@@ -149,9 +149,39 @@ function select() {
 function start() {
     main.style.display = 'none'
     main1.style.display = 'none'
-    main2.style.display = 'block'
+    main2.style.display = 'none'
+    keyLock.style.display = 'block'
+    
     
 }
+
+
+function keyEnter(){
+
+    if(keyInput.value == 123){
+        Swal.fire({
+            title: "SMIT QUIZ",
+            text: `TOTAL 10 QUESTION ,  
+            TIME = 3 Min ,
+            PASSING MARKS 70%`,
+        
+          });
+        main2.style.display='block';
+        keyLock.style.display='none';
+    }
+    else{
+        Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: "please Enter correct Key",
+         
+          });
+          keyInput.value=''
+    }
+}
+
+
+
 
 var drop = document.getElementById('drop')
 
@@ -179,6 +209,14 @@ const btnnext = document.getElementById('btn-next');
 const scoreElenment = document.getElementById('score');
 const restart = document.getElementById('btn-restart');
 const timerUp = document.getElementById('timer');
+const percentageResult=document.getElementById('percentageResult');
+const perAnnounce=document.getElementById('perAnnounce')
+perAnnounce.style.display='none';
+percentageResult.style.display='none';
+var timeIntervel = setInterval(updateTimer,1000)
+
+
+
 
 var currentQuestion = 0;
 var score = 0
@@ -227,7 +265,10 @@ function checkAnswer() {
         }
     }
 }
-checkAnswer();
+// checkAnswer();
+  
+
+
 
 function showCase() {
     clearInterval(timeIntervel);
@@ -237,14 +278,29 @@ function showCase() {
     btnnext.style.display = 'none'
     scoreElenment.style.display='block'
     scoreElenment.textContent = `your Scour: ${score} out of ${questions.length}`
+    var percet=Math.ceil(score/questions.length*(100))
+    percentageResult.innerHTML=`your percentage ${percet} % `
+    perAnnounce.style.display='block'
+
+    if(percet >= 70){
+        perAnnounce.innerHTML='you pass congratulating'
+    }
+    else{
+        perAnnounce.innerHTML='you fail'
+    }
+
+   
+    percentageResult.style.display='block'
     restart.style.display = 'block'
+    
 }
-showCase()
+// showCase()
 
 function restartQuize() {
     currentQuestion = 0;
     score = 0;
     timelefts = 180;
+    updateTimer();
     loadQuestion();
     restart.style.display = 'none'
     timerUp.style.display = 'block'
@@ -252,14 +308,16 @@ function restartQuize() {
     choice.style.display = 'block'
     btnnext.style.display = 'block'
     scoreElenment.style.display='none'
+    percentageResult.style.display='none'
+    perAnnounce.style.display='none'
     timeIntervel = setInterval(updateTimer, 1000);
 }
-restartQuize();
+// restartQuize();
 
 function updateTimer() {
     const minutes = Math.floor(timelefts / 60);
     var seconds = timelefts % 60;
-    seconds = seconds<10?"0"+ seconds:seconds;
+    seconds = seconds<10?"2"+ seconds:seconds;
     timerUp.textContent = `${minutes} : ${seconds}`;
 
     if (timelefts === 0) {
@@ -269,29 +327,14 @@ function updateTimer() {
     }
 }
 
-updateTimer()
+// updateTimer()
 
 
-var timeIntervel = setInterval(updateTimer,1000)
 
 btnnext.addEventListener("click" , checkAnswer);
 restart.addEventListener("click", restartQuize);
-loadQuestion();
-restart.style.display="none";
-
-function logout(){
-    timerUp.style.display = 'none'
-    questionElenment.style.display = 'none'
-    choice.style.display = 'none'
-    btnnext.style.display = 'none'
-    scoreElenment.style.display='none'
-    scoreElenment.textContent = 'none'
-    restart.style.display = 'none'
-    main2.style.display = 'none'
-    main1.style.display ='none'
-    main.style.display ='block'
-}
-
+// loadQuestion();
+// restart.style.display="none";
 
 var loginPage=document.querySelector('#loginPage');
 var signupPage=document.querySelector('#signupPage');
@@ -301,15 +344,39 @@ var inputEmailSignup=document.getElementById('inputEmailSignup');
 var inputpasswordSignup=document.getElementById('inputpasswordSignup');
 var nevbar=document.getElementById('nevbar')
 
+
+
+function logout(){
+    // timerUp.style.display = 'none'
+    main2.style.display='none'
+    main1.style.display ='none'
+    main.style.display ='none'
+    nevbar.style.display='none'
+    loginPage.style.display='block'
+    inputEmailSignup.value=''
+    inputEmailLogin.value=''
+    inputpasswordSignup.value=''
+    inputPasswordLogin.value=''
+    keyInput.value=''
+    localStorage.removeItem('email', inputEmailLogin.value)
+    localStorage.removeItem('password' , inputPasswordLogin.value)
+    restartQuize();
+    
+}
+
+
+
 function loginchange(){
+   
   loginPage.style.display='block';
   signupPage.style.display='none';
-
+ 
 }
 
 function signupchange(){
     loginPage.style.display='none';
     signupPage.style.display='block';
+    
 }
 
 function loginBtn(){
@@ -319,31 +386,75 @@ function loginBtn(){
         alert('please fillout')
     }
     else{
+
+
+
+        const Toast = Swal.mixin({
+            toast: true,
+            position: "top-end",
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+              toast.onmouseenter = Swal.stopTimer;
+              toast.onmouseleave = Swal.resumeTimer;
+            }
+          });
+          Toast.fire({
+            icon: "success",
+            title: "login in successfully"
+          });
+
+
         loginPage.style.display='none';
         signupPage.style.display='none';
         nevbar.style.display='block';
         main.style.display='block';
     }
 }
-// loginBtn()
-// localStorage.setItem("email" , inputEmailLogin.value)
+
 
 function signupbtn(){
-    // console.log( localStorage.getItem('email'))
-if(inputEmailSignup.value=)
-
+    
+    if(inputEmailSignup.value=='' && !inputpasswordSignup==''){
+        alert('please fillout')
+    }
+    else{
     if(localStorage.getItem('email')== inputEmailSignup.value && localStorage.getItem('password')== inputpasswordSignup.value) {
-        alert('signup sussess')
+    
+    
+        const Toast = Swal.mixin({
+            toast: true,
+            position: "top-end",
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+              toast.onmouseenter = Swal.stopTimer;
+              toast.onmouseleave = Swal.resumeTimer;
+            }
+          });
+          Toast.fire({
+            icon: "success",
+            title: "Signed in successfully"
+          });
+
+
         loginPage.style.display='none';
         signupPage.style.display='none';
         nevbar.style.display='block';
         main.style.display='block';
+        
     }
     else{
         alert('email or password not exist')
         inputEmailSignup.value='';
         inputpasswordSignup.value='';
     }
+}
 
 
 }
+
+
+

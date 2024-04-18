@@ -10,58 +10,61 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
     crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <link rel="stylesheet" href="style.css">
   <title>Quiz App</title>
 </head>
 
 <body>
- <!-- login div -->
-  <div class="login" id="loginPage" >
-    <h1> <b>Login</b> </h1>
-    <div class="loginUser">
-      <h5>Email</h5>
-      <input type="text" class="inputSec" placeholder="Email" id="inputEmailLogin">
-      <br>
-      <br>
-      <h5>Password</h5>
-      <input type="password" class="inputSec" placeholder="Password" id="inputPasswordLogin">
-      <br>
-      <br>
-      <button type="button" class="btn btn-primary alin" onclick="loginBtn()">Login</button>
-      <br>
-      <br>      
-      <h5 class="senter">Didn't have an account? <span onclick="signupchange()">signup</span></h5>
+  <div class="back-login">
+
+    <!-- login div -->
+    <div class="login" id="loginPage">
+      <h1> <b>Login</b> </h1>
+      <div class="loginUser">
+        <h5>Email</h5>
+        <input type="text" class="inputSec" placeholder="Email" id="inputEmailLogin">
+        <br>
+        <br>
+        <h5>Password</h5>
+        <input type="password" class="inputSec" placeholder="Password" id="inputPasswordLogin">
+        <br>
+        <br>
+        <button type="button" class="btn btn-primary alin" onclick="loginBtn()">Login</button>
+        <br>
+        <br>
+        <h5 class="senter">Didn't have an account? <span onclick="signupchange()">signup</span></h5>
+      </div>
+
+    </div>
+
+    <!-- signup div -->
+
+    <div class="login" id="signupPage" style="display: none;">
+      <h1> <b>Signup</b> </h1>
+      <div class="loginUser">
+        <h5>Email</h5>
+        <input type="text" class="inputSec" placeholder="Your Email" id="inputEmailSignup">
+        <br>
+        <br>
+        <h5>Password</h5>
+        <input type="password" class="inputSec" placeholder="create Password" id="inputpasswordSignup">
+        <br>
+        <br>
+        <button type="button" class="btn btn-primary alin" onclick="signupbtn()">signup</button>
+        <br>
+        <br>
+        <h5 class="senter">Already have an account ? <span onclick="loginchange()">login</span></h5>
+      </div>
+
     </div>
 
   </div>
 
-<!-- signup div -->
-
-  <div class="login" id="signupPage" style="display: none;">
-    <h1> <b>Signup</b> </h1>
-    <div class="loginUser">
-      <h5>Email</h5>
-      <input type="text" class="inputSec" placeholder="Your Email" id="inputEmailSignup">
-      <br>
-      <br>
-      <h5>Password</h5>
-      <input type="password" class="inputSec" placeholder="create Password" id="inputpasswordSignup">
-      <br>
-      <br>
-      <button type="button" class="btn btn-primary alin" onclick="signupbtn()">signup</button>
-      <br>
-      <br>      
-      <h5 class="senter" >Already have an account ? <span onclick="loginchange()">login</span></h5>
-    </div>
-
-  </div>
 
 
 
-
-
-
-  <nav class="navbar navbar-light bg-light" id="nevbar" style="display: none;" >
+  <nav class="navbar navbar-light bg-light" id="nevbar" style="display: none;">
     <div class="container">
       <a class="navbar-brand" href="#">
         <img src="https://quiz.saylaniwelfare.com/images/smit.png" alt="" width="100" height="64"
@@ -97,6 +100,14 @@
       Jawascript</button>
   </div>
 
+     <div id="keyLock" style="display: none;">
+       <h3>Enter Key:</h3>
+       <input type="password" id="keyInput" style="width: 95%; padding: 10px; font-size: large;" placeholder="Enter key">
+       <br>
+       <br>
+       <button class="keyBtn" onclick="keyEnter()">enter</button>
+    </div>
+
 
   <div id="main2" style="display: none;">
     <div class="haeding">
@@ -121,6 +132,9 @@
           <br>
           <br>
           <h3 id="score" class="text-center mt-4"></h3>
+          <h3 id="percentageResult" style="display: none; text-align: center;"></h3>
+          <h3 id="perAnnounce" style="display: none; text-align: center;"></h3>
+
           <button class="btn btn-primary" id="btn-restart" style="display: none;" type="submit">Restart</button>
         </div>
       </div>
