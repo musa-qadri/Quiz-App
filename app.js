@@ -109,7 +109,7 @@ var main1 = document.getElementById('main1')
 var main2 = document.getElementById('main2')
 var cart = document.getElementById('cart')
 var keyLock = document.getElementById('keyLock')
-var keyInput =document.getElementById('keyInput');
+var keyInput = document.getElementById('keyInput');
 
 
 for (key in subject) {
@@ -151,32 +151,32 @@ function start() {
     main1.style.display = 'none'
     main2.style.display = 'none'
     keyLock.style.display = 'block'
-    
-    
+
+
 }
 
 
-function keyEnter(){
+function keyEnter() {
 
-    if(keyInput.value == 123){
+    if (keyInput.value == 123) {
         Swal.fire({
             title: "SMIT QUIZ",
             text: `TOTAL 10 QUESTION ,  
             TIME = 3 Min ,
             PASSING MARKS 70%`,
-        
-          });
-        main2.style.display='block';
-        keyLock.style.display='none';
+
+        });
+        main2.style.display = 'block';
+        keyLock.style.display = 'none';
     }
-    else{
+    else {
         Swal.fire({
             icon: "error",
             title: "Oops...",
             text: "please Enter correct Key",
-         
-          });
-          keyInput.value=''
+
+        });
+        keyInput.value = ''
     }
 }
 
@@ -205,15 +205,15 @@ dropdown()
 
 const questionElenment = document.getElementById('questio');
 const choice = document.getElementById('choice');
-const btnnext = document.getElementById('btn-next');    
+const btnnext = document.getElementById('btn-next');
 const scoreElenment = document.getElementById('score');
 const restart = document.getElementById('btn-restart');
 const timerUp = document.getElementById('timer');
-const percentageResult=document.getElementById('percentageResult');
-const perAnnounce=document.getElementById('perAnnounce')
-perAnnounce.style.display='none';
-percentageResult.style.display='none';
-var timeIntervel = setInterval(updateTimer,1000)
+const percentageResult = document.getElementById('percentageResult');
+const perAnnounce = document.getElementById('perAnnounce')
+perAnnounce.style.display = 'none';
+percentageResult.style.display = 'none';
+var timeIntervel = setInterval(updateTimer, 1000)
 
 
 
@@ -244,16 +244,16 @@ loadQuestion();
 
 function checkAnswer() {
     var colore = document.querySelector('.backcolor')
-    
+
     const selectOption = document.querySelector("input[name = 'choice']:checked")
-    
+
     if (selectOption) {
         const selectAnswer = parseInt(selectOption.value)
         if (selectAnswer === questions[currentQuestion].correctAnswer) {
             score++;
         }
-        if(selectOption.value===1){
-            btnnext.style.display=colore
+        if (selectOption.value === 1) {
+            btnnext.style.display = colore
         }
         console.log(selectOption.value)
         currentQuestion++;
@@ -266,7 +266,7 @@ function checkAnswer() {
     }
 }
 // checkAnswer();
-  
+
 
 
 
@@ -276,23 +276,23 @@ function showCase() {
     questionElenment.style.display = 'none'
     choice.style.display = 'none'
     btnnext.style.display = 'none'
-    scoreElenment.style.display='block'
+    scoreElenment.style.display = 'block'
     scoreElenment.textContent = `your Scour: ${score} out of ${questions.length}`
-    var percet=Math.ceil(score/questions.length*(100))
-    percentageResult.innerHTML=`your percentage ${percet} % `
-    perAnnounce.style.display='block'
+    var percet = Math.ceil(score / questions.length * (100))
+    percentageResult.innerHTML = `your percentage ${percet} % `
+    perAnnounce.style.display = 'block'
 
-    if(percet >= 70){
-        perAnnounce.innerHTML='you pass congratulating'
+    if (percet >= 70) {
+        perAnnounce.innerHTML = 'you pass congratulating'
     }
-    else{
-        perAnnounce.innerHTML='you fail'
+    else {
+        perAnnounce.innerHTML = 'you fail'
     }
 
-   
-    percentageResult.style.display='block'
+
+    percentageResult.style.display = 'block'
     restart.style.display = 'block'
-    
+
 }
 // showCase()
 
@@ -307,9 +307,9 @@ function restartQuize() {
     questionElenment.style.display = 'block'
     choice.style.display = 'block'
     btnnext.style.display = 'block'
-    scoreElenment.style.display='none'
-    percentageResult.style.display='none'
-    perAnnounce.style.display='none'
+    scoreElenment.style.display = 'none'
+    percentageResult.style.display = 'none'
+    perAnnounce.style.display = 'none'
     timeIntervel = setInterval(updateTimer, 1000);
 }
 // restartQuize();
@@ -317,7 +317,7 @@ function restartQuize() {
 function updateTimer() {
     const minutes = Math.floor(timelefts / 60);
     var seconds = timelefts % 60;
-    seconds = seconds<10?"2"+ seconds:seconds;
+    seconds = seconds < 10 ? "2" + seconds : seconds;
     timerUp.textContent = `${minutes} : ${seconds}`;
 
     if (timelefts === 0) {
@@ -331,130 +331,171 @@ function updateTimer() {
 
 
 
-btnnext.addEventListener("click" , checkAnswer);
+btnnext.addEventListener("click", checkAnswer);
 restart.addEventListener("click", restartQuize);
 // loadQuestion();
 // restart.style.display="none";
 
-var loginPage=document.querySelector('#loginPage');
-var signupPage=document.querySelector('#signupPage');
-var inputEmailLogin=document.getElementById('inputEmailLogin');
-var inputPasswordLogin=document.getElementById('inputPasswordLogin');
-var inputEmailSignup=document.getElementById('inputEmailSignup');
-var inputpasswordSignup=document.getElementById('inputpasswordSignup');
-var nevbar=document.getElementById('nevbar')
+var loginPage = document.querySelector('#loginPage');
+var signupPage = document.querySelector('#signupPage');
+var inputEmailLogin = document.getElementById('inputEmailLogin');
+var inputPasswordLogin = document.getElementById('inputPasswordLogin');
+var inputEmailSignup = document.getElementById('inputEmailSignup');
+var inputpasswordSignup = document.getElementById('inputpasswordSignup');
+var nevbar = document.getElementById('nevbar');
+var SignupUser = document.getElementById('SignupUser');
+var conformPassword = document.getElementById('conformPassword')
+let errorPara = document.getElementById('errorPara');
+let errorParaEmail = document.getElementById('errorParaEmail');
+let errorParaPassword = document.getElementById('errorParaPassword');
 
 
 
-function logout(){
+function logout() {
     // timerUp.style.display = 'none'
-    main2.style.display='none'
-    main1.style.display ='none'
-    main.style.display ='none'
-    nevbar.style.display='none'
-    loginPage.style.display='block'
-    inputEmailSignup.value=''
-    inputEmailLogin.value=''
-    inputpasswordSignup.value=''
-    inputPasswordLogin.value=''
-    keyInput.value=''
+    main2.style.display = 'none'
+    main1.style.display = 'none'
+    main.style.display = 'none'
+    nevbar.style.display = 'none'
+    loginPage.style.display = 'block'
+    inputEmailSignup.value = ''
+    inputEmailLogin.value = ''
+    inputpasswordSignup.value = ''
+    inputPasswordLogin.value = ''
+    keyInput.value = ''
     localStorage.removeItem('email', inputEmailLogin.value)
-    localStorage.removeItem('password' , inputPasswordLogin.value)
+    localStorage.removeItem('password', inputPasswordLogin.value)
     restartQuize();
-    
+
 }
 
 
 
-function loginchange(){
-   
-  loginPage.style.display='block';
-  signupPage.style.display='none';
+function loginchange() {
+
+    loginPage.style.display = 'block';
+    signupPage.style.display = 'none';
+
+}
+
+function signupchange() {
+    loginPage.style.display = 'none';
+    signupPage.style.display = 'block';
+    errorParaEmail.style.display='none';
+    errorParaPassword.style.display='none';
  
 }
 
-function signupchange(){
-    loginPage.style.display='none';
-    signupPage.style.display='block';
-    
-}
-
-function loginBtn(){
-    localStorage.setItem('email', inputEmailLogin.value)
-    localStorage.setItem('password' , inputPasswordLogin.value)
-    if(inputEmailLogin.value=='' && !inputPasswordLogin==''){
-        alert('please fillout')
+function signupbtn() {
+    localStorage.setItem('email', inputEmailSignup.value)
+    localStorage.setItem('password', inputpasswordSignup.value)
+    if (SignupUser.value == '' || inputEmailSignup.value == '' || inputpasswordSignup.value == '') {
+       
+        Swal.fire("please fillout!");
     }
-    else{
+    else {
 
+        if (inputpasswordSignup.value == conformPassword.value) {
+            const Toast = Swal.mixin({
+                toast: true,
+                position: "top-end",
+                showConfirmButton: false,
+                timer: 3000,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                    toast.onmouseenter = Swal.stopTimer;
+                    toast.onmouseleave = Swal.resumeTimer;
+                }
+            });
+            Toast.fire({
+                icon: "success",
+                title: "login in successfully"
+            });
+                   
+            loginPage.style.display = 'none';
+            signupPage.style.display = 'none';
+            nevbar.style.display = 'block';
+            main.style.display = 'block';
 
-
-        const Toast = Swal.mixin({
-            toast: true,
-            position: "top-end",
-            showConfirmButton: false,
-            timer: 3000,
-            timerProgressBar: true,
-            didOpen: (toast) => {
-              toast.onmouseenter = Swal.stopTimer;
-              toast.onmouseleave = Swal.resumeTimer;
-            }
-          });
-          Toast.fire({
-            icon: "success",
-            title: "login in successfully"
-          });
-
-
-        loginPage.style.display='none';
-        signupPage.style.display='none';
-        nevbar.style.display='block';
-        main.style.display='block';
-    }
-}
-
-
-function signupbtn(){
-    
-    if(inputEmailSignup.value=='' && !inputpasswordSignup==''){
-        alert('please fillout')
-    }
-    else{
-    if(localStorage.getItem('email')== inputEmailSignup.value && localStorage.getItem('password')== inputpasswordSignup.value) {
-    
-    
-        const Toast = Swal.mixin({
-            toast: true,
-            position: "top-end",
-            showConfirmButton: false,
-            timer: 3000,
-            timerProgressBar: true,
-            didOpen: (toast) => {
-              toast.onmouseenter = Swal.stopTimer;
-              toast.onmouseleave = Swal.resumeTimer;
-            }
-          });
-          Toast.fire({
-            icon: "success",
-            title: "Signed in successfully"
-          });
-
-
-        loginPage.style.display='none';
-        signupPage.style.display='none';
-        nevbar.style.display='block';
-        main.style.display='block';
+          
+        }
+        else {
         
-    }
-    else{
-        alert('email or password not exist')
-        inputEmailSignup.value='';
-        inputpasswordSignup.value='';
+            conformPassword.value=''
+            conformPassword.className='redBorder'
+            errorPara.style.display='block'
+          
+        }
+
     }
 }
 
 
+function loginBtn() {
+
+    if (inputEmailLogin.value == '' && !inputPasswordLogin == '') {
+        alert('please fillout')
+    }
+    else {
+        if (localStorage.getItem('email') == inputEmailLogin.value && localStorage.getItem('password') == inputPasswordLogin.value) {
+
+
+            const Toast = Swal.mixin({
+                toast: true,
+                position: "top-end",
+                showConfirmButton: false,
+                timer: 3000,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                    toast.onmouseenter = Swal.stopTimer;
+                    toast.onmouseleave = Swal.resumeTimer;
+                }
+            });
+            Toast.fire({
+                icon: "success",
+                title: "Signed in successfully"
+            });
+
+
+            loginPage.style.display = 'none';
+            signupPage.style.display = 'none';
+            nevbar.style.display = 'block';
+            main.style.display = 'block';
+
+        }
+        else {
+            // Swal.fire("email or password not exist!");
+            inputEmailLogin.class='redBorder';
+            errorParaEmail.style.display='block'
+            errorParaPassword.style.display='block'
+            inputEmailLogin.className='redBorder';
+            inputPasswordLogin.className='redBorder';
+        }
+    }
+
+
 }
 
 
+let obj = {
+    student : 'musa',
+    sub : 'eng',
+}
 
+let obj1 ={
+    school: 'snit',
+    class: 'wam',
+}
+
+// for(let key in obj1){
+//     obj[key] = obj1[key]
+    
+// }
+// console.log(obj)
+
+let merge = {
+    ...obj,
+    ...obj1,
+}
+
+console.log(mergeg )

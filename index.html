@@ -18,16 +18,52 @@
 <body>
   <div class="back-login">
 
+
+   
+    
+    <!-- signup div -->
+
+    <div class="login" id="signupPage" >
+      <h1> <b>Signup</b> </h1>
+      <div class="loginUser">
+        <h5>User Name</h5>
+        <input type="text" class="inputSec" placeholder="User name" id="SignupUser">
+
+        <h5>Email</h5>
+        <input type="text" class="inputSec" placeholder="Your Email" id="inputEmailSignup">
+        <br>
+        <br>
+        <h5>Password</h5>
+        <input type="password" class="inputSec" placeholder="create Password" id="inputpasswordSignup">
+        <br>
+        <h5>Confirm Password</h5>
+        <input  type="password" class="inputSec" placeholder="Confirm Password" id="conformPassword">
+        <p id="errorPara" style="display: none;">some wrong value inside that field.</p>
+        <br>
+        <br>
+        <button type="button" class="btn btn-primary alin" onclick="signupbtn()">signup</button>
+        <br>
+        <br>
+        <h5 class="senter">Already have an account ? <span onclick="loginchange()">login</span></h5>
+      </div>
+
+    </div>
+
+
+
+
     <!-- login div -->
-    <div class="login" id="loginPage">
+    <div class="login" id="loginPage" style="display: none;">
       <h1> <b>Login</b> </h1>
       <div class="loginUser">
         <h5>Email</h5>
         <input type="text" class="inputSec" placeholder="Email" id="inputEmailLogin">
+        <span id="errorParaEmail" style="display: none;">'invalid email'</span>
         <br>
         <br>
         <h5>Password</h5>
         <input type="password" class="inputSec" placeholder="Password" id="inputPasswordLogin">
+        <span id="errorParaPassword" style="display: none;">'invalid password'.</span>
         <br>
         <br>
         <button type="button" class="btn btn-primary alin" onclick="loginBtn()">Login</button>
@@ -38,26 +74,6 @@
 
     </div>
 
-    <!-- signup div -->
-
-    <div class="login" id="signupPage" style="display: none;">
-      <h1> <b>Signup</b> </h1>
-      <div class="loginUser">
-        <h5>Email</h5>
-        <input type="text" class="inputSec" placeholder="Your Email" id="inputEmailSignup">
-        <br>
-        <br>
-        <h5>Password</h5>
-        <input type="password" class="inputSec" placeholder="create Password" id="inputpasswordSignup">
-        <br>
-        <br>
-        <button type="button" class="btn btn-primary alin" onclick="signupbtn()">signup</button>
-        <br>
-        <br>
-        <h5 class="senter">Already have an account ? <span onclick="loginchange()">login</span></h5>
-      </div>
-
-    </div>
 
   </div>
 
