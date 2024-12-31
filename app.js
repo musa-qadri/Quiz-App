@@ -2,6 +2,7 @@ var subject = {
     Python: {
         subName: '1 Subjects',
 
+        
     },
     'Web and App Crash Course': {
         subName: '1 Subjects',
