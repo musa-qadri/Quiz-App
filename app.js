@@ -10,6 +10,7 @@ var subject = {
     },
     'Web & App Development(Madaris)': {
         subName: '1 Subjects',
+        
 
     },
     TypeScript: {
